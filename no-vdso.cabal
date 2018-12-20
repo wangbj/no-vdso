@@ -1,0 +1,69 @@
+cabal-version: 1.12
+
+-- This file has been generated from package.yaml by hpack version 0.31.1.
+--
+-- see: https://github.com/sol/hpack
+--
+-- hash: 29e06c4f3a2a713aefd959c30025ed6725457b3578ec8194da0052ea4ea174aa
+
+name:           no-vdso
+version:        0.1.0.0
+description:    Please see the README on GitHub at <https://github.com/wangbj/no-vdso#readme>
+homepage:       https://github.com/wangbj/no-vdso#readme
+bug-reports:    https://github.com/wangbj/no-vdso/issues
+author:         Baojun Wang
+maintainer:     wangbj@gmail.com
+copyright:      2018 Baojun Wang
+license:        BSD3
+license-file:   LICENSE
+build-type:     Simple
+extra-source-files:
+    README.md
+    ChangeLog.md
+
+source-repository head
+  type: git
+  location: https://github.com/wangbj/no-vdso
+
+library
+  exposed-modules: Proc
+                   Data.Elf
+  other-modules: Paths_no_vdso
+  hs-source-dirs: src
+  build-depends:  base >=4.7 && <5
+                , bytestring
+                , parsec
+                , mtl
+                , binary
+                , unix
+                , process
+  default-language: Haskell2010
+
+executable no-vdso-exe
+  main-is: Main.hs
+  other-modules:
+      Paths_no_vdso
+  hs-source-dirs:
+      app
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends: base >=4.7 && <5
+               , bytestring
+               , parsec
+               , mtl
+               , binary
+               , no-vdso
+               , unix
+               , process
+  default-language: Haskell2010
+
+test-suite no-vdso-test
+  type: exitcode-stdio-1.0
+  main-is: Spec.hs
+  other-modules:
+      Paths_no_vdso
+  hs-source-dirs:
+      test
+  ghc-options: -threaded -rtsopts -with-rtsopts=-N
+  build-depends: base >=4.7 && <5
+               , no-vdso
+  default-language: Haskell2010
